@@ -1,29 +1,32 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jumper</title>
-    <link rel="stylesheet" href="./style/index.css" />
-  </head>
-  <body>
-    <video autoplay muted loop playsinline id="background-video">
-      <source src="./background/background.mp4" type="video/mp4" />
-    </video>
 
-    <section class="welcome-message">
-      <h2 class="jumper-hero">Jumper</h2>
-      <h3>
-        Welcome to Jumper!<br />
-        <p>Press start and try to survive</p>
-      </h3>
-      <button id="start-btn">Start</button>
-    </section>
-    <script>
-      document.getElementById("start-btn").addEventListener("click", function (e) {
-        e.preventDefault();
-        window.location.href= "pages/jumper-game.html";
-      });
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jumper</title>
+  <link rel="stylesheet" href="./style/index.css" />
+</head>
+
+<body>
+  <video autoplay muted loop playsinline id="background-video">
+    <source src="./background/background.mp4" type="video/mp4" />
+  </video>
+
+  <section class="welcome-message">
+    <h2 class="jumper-hero">Jumper</h2>
+    <h3>
+      Welcome to Jumper!<br />
+      <p>Press start and try to survive</p>
+    </h3>
+    <button id="start-btn">Start</button>
+  </section>
+  <script>
+    document.getElementById("start-btn").addEventListener("click", function (e) {
+      e.preventDefault();
+      window.location.href = "pages/jumper-game.html";
+    });
+  </script>
+</body>
+
 </html>
