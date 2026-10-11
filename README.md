@@ -1,168 +1,85 @@
-# 🕹️ Jumper
+# 🌵 Jumper
 
-A simple 2D game built with JavaScript using the HTML5 `<canvas>` element.  
-The player controls a character that must jump to avoid obstacles (cacti) and achieve the highest possible score.
+A fast, simple 2D endless-runner game built with vanilla JavaScript and the HTML5 Canvas. Jump over cacti, rack up points, and see how long you can survive as the game keeps getting faster.
 
----
-
-## 📌 Features
-
-- Simple and intuitive gameplay  
-- Dynamic scoring system  
-- Progressive difficulty (speed increases over time)  
-- Keyboard controls  
-- Minimalist graphics rendered via Canvas API  
-- Quick restart system  
+**▶️ [Play it live](https://gift1400.github.io/Jumper/)**
 
 ---
 
-## 🗂️ Project Structure
+## Screenshots
+
+| Start screen | Gameplay | Game over |
+|:---:|:---:|:---:|
+| ![Start screen](screenshots/landing-page.png) | ![Gameplay](screenshots/playing.png) | ![Game over](screenshots/game-over.png) |
+
+---
+
+## Features
+
+- **Simple controls**: one key to jump, one key to restart
+- **Dynamic scoring**: your score climbs the longer you survive
+- **Increasing difficulty**: the game speeds up over time
+- **Quick restart**: jump straight back in after a Game Over
+- **No dependencies**: just HTML, CSS and JavaScript
+
+## Controls
+
+| Key | Action |
+|---|---|
+| `Space` or `↑` | Jump |
+| `Enter` | Restart after Game Over |
+
+## How It Works
+
+- **Physics**: gravity pulls the player down, and jumping is only possible while on the ground
+- **Collision detection**: AABB (axis-aligned bounding box) checks between the player and obstacles
+- **Game loop**: driven by `requestAnimationFrame` for smooth rendering
+
+## Tech Stack
+
+- HTML5 (`<canvas>`)
+- CSS3
+- Vanilla JavaScript
+- Docker + Nginx (optional, for containerized hosting)
+
+## Getting Started
+
+### Run locally
+
+```bash
+git clone https://github.com/Gift1400/Jumper.git
+cd Jumper
+```
+
+Open `index.html` in a modern browser (Chrome, Firefox or Edge) and click **Start**.
+
+### Run with Docker
+
+```bash
+docker build -t jumper .
+docker run -p 8080:80 jumper
+```
+
+Then visit [http://localhost:8080](http://localhost:8080).
+
+## Project Structure
 
 ```
-project/
-│
-├── index.html                # Main landing page
-│
-├── background/
-│   └── (background image)    # Background used in index.html
-│
+Jumper/
+├── index.html            # Landing page with the Start button
 ├── pages/
-│   └── jumper-game.html      # Game page
-│
+│   └── jumper-game.html  # Game page
 ├── style/
-│   ├── index.css             # Styles for the landing page
-│   └── jumper-game.css       # Styles for the game page
-│ 
-└── script/
-    └── jumper.js             # Game logic
-```
-```
-
-⚠️ Note: Make sure the paths (`../style/` and `../script/`) match your actual project structure.
-
----
-
-## 🚀 How to Run the Game
-
-1. Clone or download the project  
-2. Open `index.html` in a modern browser (Chrome, Firefox, Edge)  
-3. Click **Start**  
-4. Start playing 🎮  
-
----
-
-## 🎮 Controls
-
-| Key         | Action              |
-|------------|----------------------|
-| `Space`     | Jump                |
-| `Arrow Up`  | Jump                |
-| `Enter`     | Restart (after Game Over) |
-
----
-
-## 🧠 Game Logic
-
-### 👤 Player
-
-The player is represented by a rectangle with:
-
-- Simulated gravity (`gravity`)  
-- Vertical velocity (`velocityY`)  
-- Controlled jump (`jumpStrength`)  
-- Ground state (`grounded`)  
-
-Jumping is only allowed when the player is on the ground.
-
----
-
-### 🌵 Obstacles
-
-- Generated at random intervals  
-- Variable height and width  
-- Move from right to left  
-- Removed when they leave the screen  
-
-Each avoided obstacle increases the score.
-
----
-
-### ⚡ Progressive Difficulty
-
-- Every 5 points:
-  - Obstacle speed increases (`speed += 0.4`)  
-- Spawn interval becomes variable  
-
----
-
-### 💥 Collisions
-
-Based on **Axis-Aligned Bounding Box (AABB)**:
-
-```js
-a.x < b.x + b.width &&
-a.x + a.width > b.x &&
-a.y < b.y + b.height &&
-a.y + a.height > b.y
+│   ├── index.css
+│   └── jumper-game.css
+├── script/
+│   └── jumper.js         # Game logic
+├── background/           # Background assets
+├── screenshots/          # README screenshots
+├── Dockerfile
+└── .dockerignore
 ```
 
-If the player collides with an obstacle:
-- The game ends  
-- The final score is displayed  
+## Author
 
----
-
-### 🔁 Game Loop
-
-Handled via:
-
-```js
-requestAnimationFrame(gameLoop)
-```
-
-Each frame:
-1. Draw background  
-2. Draw ground  
-3. Draw player and obstacles  
-4. Update physics (gravity)  
-5. Check collisions  
-6. Update score  
-
----
-
-## 🎨 Rendering
-
-All graphics are drawn using the Canvas API:
-
-- Background (sun + clouds)  
-- Player (rectangle + eye)  
-- Obstacles (stylized cactus)  
-- Ground with details  
-
----
-
-## 🔄 Game States
-
-| State       | Description |
-|------------|------------|
-| Playing     | Game is active |
-| Game Over   | Player has lost |
-
----
-
-## 🔘 UI Elements
-
-- `Score`: current score  
-- `Status`: game state  
-- `Start Button`: starts/resets the game  
-- `Canvas`: game area  
-
----
-
-## 📦 Technologies Used
-
-- HTML5  
-- CSS (external)  
-- JavaScript (Vanilla)  
-- Canvas API  
-
+Built by [Gift1400](https://github.com/Gift1400).
